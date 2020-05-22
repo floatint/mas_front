@@ -1,0 +1,21 @@
+div.cards-container {
+    margin-bottom: 2em;
+    white-space: pre-wrap;
+    /*height: 300px;
+    flex-flow: column wrap;
+    align-content: flex-start;*/
+}
+
+mat-card {
+    margin-top: 2em;
+    margin-left: 2em;
+    max-width: 15em;
+}
+app-analysis-card{
+    margin-top: 2em;
+    margin-left: 2em;
+    max-width: 20em;
+    /*min-width: 10em;
+    min-height: 15em;
+    max-height: 15em;*/
+}
