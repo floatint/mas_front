@@ -26,7 +26,7 @@ export class AnalysisCardComponent implements OnInit {
     //save analysis id into localStorage for next processing
     window.localStorage.setItem(this.appConsts.ORDER_ANALYSIS_ID, this.analysisId.toString());
     //if signed in
-    if (this.authService.isLoggedIn) {
+    if (this.authService.isSignedIn) {
       this.router.navigate(['/date']);
     } else {
       //sign in
