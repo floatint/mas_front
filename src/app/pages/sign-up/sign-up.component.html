@@ -1,0 +1,38 @@
+<div class="content">
+    <mat-card>
+        <mat-card-title>
+            Регистрация
+        </mat-card-title>
+        <mat-card-content>
+            <form [formGroup]="form">
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Имя" formControlName="userName" required>
+                    <mat-error *ngIf="isFieldInvalid('userName')">
+                        Введите имя
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input">
+                    <input matInput placeholder="Email" formControlName="userEmail" required>
+                    <mat-error *ngIf="isFieldInvalid('userEmail')">
+                        Введите email
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="full-width-input">
+                    <input matInput type="password" placeholder="Пароль" formControlName="userPass" required>
+                    <mat-error *ngIf="isFieldInvalid('userPass')">
+                        Введите пароль
+                    </mat-error>
+                </mat-form-field>
+                <!-- sign in error -->
+                <mat-error *ngIf="signInError">
+                    {{signInError}}
+                </mat-error>
+            </form>
+            <a routerLink="/sign-in">Уже есть учетная запись ?</a>
+        </mat-card-content>
+        <mat-card-actions align="end">
+            <button mat-raised-button color="primary" (click)="onBack()">Назад</button>
+            <button mat-raised-button color="primary" (click)="onSignUp()">Регистрация</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

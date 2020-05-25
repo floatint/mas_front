@@ -1,0 +1,61 @@
+<div class="cards-container" fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutAlign="start start">
+    <app-analysis-card
+        *ngFor="let a of analyses;"
+        analysisId="{{a.id}}"
+        name="{{a.name}}"
+        description="{{a.description}}"
+        fxFlex="0 1 calc(33.3% - 32px)" 
+        fxFlex.lt-md="0 1 calc(50% - 32px)" 
+        fxFlex.lt-sm="100%"
+    ></app-analysis-card>
+ <!--    <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+        <mat-card-title>
+            <h3>This is card</h3>
+        </mat-card-title> 
+        <mat-divider [inset]="true"></mat-divider>
+        <mat-card-content>
+            <p>SOME CARD TEXT DESCRIPTINO</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+        <mat-card-title>
+            <h3>This is card</h3>
+        </mat-card-title>
+        <mat-divider [inset]="true"></mat-divider>
+        <mat-card-content>
+            <p>SOME CARD TEXT DESCRIPTINO</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+        <mat-card-title>
+            <h3>This is card</h3>
+        </mat-card-title>
+        <mat-card-content>
+            <p>SOME CARD TEXT DESCRIPTINO</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+        <mat-card-title>
+            <h3>This is card</h3>
+        </mat-card-title>
+        <mat-card-content>
+            <p>SOME CARD TEXT DESCRIPTINO djfbkdjfjksdhfjk dwewedwed dfsdfsdfsdf</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+        <mat-card-title>
+            <h3>This is card</h3>
+        </mat-card-title>
+        <mat-card-content>
+            <p>SOME CARD TEXT DESCRIPTINO</p>
+        </mat-card-content>
+    </mat-card>
+    <mat-card fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+        <mat-card-title>
+            <h3>This is card</h3>
+        </mat-card-title>
+        <mat-card-content>
+            <p>SOME CARD TEXT DESCRIPTINO djfbkdjfjksdhfjk<br>dwewedwed<br>dfsdfsdfsdf</p>
+        </mat-card-content>
+    </mat-card> -->
+</div>

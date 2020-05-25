@@ -1,0 +1,13 @@
+<mat-card>
+    <mat-card-title>
+        <h4>{{name}}</h4>
+    </mat-card-title> 
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-card-content>
+        <p>{{description}}</p>
+    </mat-card-content>
+    <mat-divider [inset]="true"></mat-divider>
+    <mat-card-actions align="end">
+        <button mat-raised-button color="primary" (click)="onOrder()">Записаться</button>
+    </mat-card-actions>
+</mat-card>
