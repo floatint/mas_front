@@ -4,6 +4,7 @@ import { RouterModule, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { AppConstants } from '../../app.constants';
 import { AuthService } from '../../services/auth/auth.service';
+import { User } from '../../entities/user';
 import { DialogsService } from '../../services/ui/dialogs.service';
 
 @Component({
@@ -28,7 +29,7 @@ export class SignInPageComponent implements OnInit {
               private location: Location) { }
 
   ngOnInit() {
-    //TODO: setup form 
+    //setup form 
     this.form = this.fb.group({
       userEmail: [
         '', 
@@ -51,17 +52,30 @@ export class SignInPageComponent implements OnInit {
     //if form valid
     if (this.form.valid) {
       //sign in
-      this.authService.signIn(this.form.get('userEmail').value, this.form.get('userPass').value);
-      //if fail
-      if (!this.authService.isLoggedIn) {
-        this.dialogs.showMessage(null, 'Неверный email или пароль');
-      } else { //success
-        if (window.localStorage.getItem(this.appConsts.ORDER_ANALYSIS_ID) != null) {
-          this.router.navigate(['/date']);
-        } else {
-          this.router.navigate(['/order']);
-        }
-      }
+      this.authService.signIn(this.form.get('userEmail').value, this.form.get('userPass').value)
+        .subscribe((data: User) => {
+          let email = this.form.get('userEmail').value;
+          let pass = this.form.get('userPass').value;
+          window.localStorage.setItem(this.appConsts.USER_MODEL, JSON.stringify(data));
+          window.localStorage.setItem(this.appConsts.USER_TOKEN, window.btoa(email + ':' + pass));
+          //next page
+          if (window.localStorage.getItem(this.appConsts.ORDER_ANALYSIS_ID) != null)
+            this.router.navigate(['/date']);
+          else
+            this.router.navigate(['/order']);
+        },
+        err => {
+          switch (err.status) {
+            case 401:
+              this.dialogs.showMessage(null, "Неверный email или пароль");
+              break;
+            case 0: 
+              this.dialogs.showMessage(null, "Сервер приложений не доступен");
+              break;
+            default:
+              this.dialogs.showMessage(null, "Внутренняя ошибка сервера. Код " + err.status);
+          }
+        });
     } else {
       this.formSubmitAttempt = true;
       this.dialogs.showMessage(null, "Введите данные");
