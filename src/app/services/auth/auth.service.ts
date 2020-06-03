@@ -13,6 +13,7 @@ export class AuthService {
     constructor (private http: HttpClient,
                  private appConsts: AppConstants) {}
     
+    //TODO: не совсем верна логика работы в компоненте header при выходе
     public get isSignedIn(): boolean {
         return window.localStorage.getItem(this.appConsts.USER_TOKEN) != null;
     }
@@ -33,7 +34,7 @@ export class AuthService {
     }
 
     public signUp(name: string, email: string, password: string): Observable<User> {
-        return this.http.post<User>(environment.baseApiUrl + '/auth/sing-up', {name: name, email: email, password: password});
+        return this.http.post<User>(environment.baseApiUrl + '/auth/sign-up', {name: name, email: email, password: password});
     }
 
     public signOut() {
