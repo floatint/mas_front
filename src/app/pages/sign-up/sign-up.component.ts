@@ -55,11 +55,12 @@ export class SignUpPageComponent implements OnInit {
                               this.form.get('userEmail').value, 
                               this.form.get('userPass').value)
           .subscribe((data: User) => {
+            console.log(data);
             //store data
             let email = this.form.get('userEmail').value;
             let pass = this.form.get('userPass').value;
             window.localStorage.setItem(this.appConsts.USER_TOKEN, window.btoa(email + ':' + pass));
-            window.localStorage.setItem(this.appConsts.USER_MODEL, data.toString());
+            window.localStorage.setItem(this.appConsts.USER_MODEL, JSON.stringify(data));
             //next page
             if (window.localStorage.getItem(this.appConsts.ORDER_ANALYSIS_ID) != null)
               this.router.navigate(['/date']);
